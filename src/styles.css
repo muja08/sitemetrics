@@ -1,1 +1,58 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://images.examly.io/icons2/examly.css');
+
+:root {
+    --main-color: blue
+}
+
+
+
+
+
+
+
+
+
+.flex {
+    display: flex;
+}
+.row {
+    flex-direction: row;
+}
+.column {
+    flex-direction: column;
+}
+.j-center {
+    justify-content: center;
+}
+.j-f-end {
+    justify-content: flex-end;
+}
+.s-between {
+    justify-content: space-between;
+}
+.s-around {
+    justify-content: space-around;
+}
+.a-center {
+    align-items: center;
+}
+.j-between {
+    justify-content: space-between;
+}
+.wrap {
+    flex-wrap: wrap;
+}
+.w100 {
+    width: 100%;
+}
+.fb50 {
+    flex-basis: 50%;
+}
+.pointer {
+    cursor: pointer;
+}
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

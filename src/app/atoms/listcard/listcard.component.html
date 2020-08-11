@@ -1,0 +1,21 @@
+
+
+
+
+<div class="card flex column s-between">
+  <div class=imageDiv>
+    <img class="image" [src]="listDetails.thumbNail">
+    <div class="duration">{{listDetails.duration}}</div>
+  </div>
+  <div class="videoTitle">
+    {{listDetails.title}}
+  </div>
+  <div class="finalDivision flex s-between">
+    <div class="finalEach">
+      {{listDetails.views}}
+    </div>
+    <div class="finalEach flex j-f-end">
+        {{listDetails.posted}}
+    </div>
+  </div>
+</div>

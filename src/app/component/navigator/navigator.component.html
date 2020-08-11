@@ -1,0 +1,33 @@
+<div class="flex navTop a-center j-between">
+
+  <div class="flex icon-navicon"></div>
+
+
+  <div class="flex a-center">
+
+    <div class="flex a-center profile pointer">
+      <div class="flex br50">
+        <img class="pp br50" src="https://storage.cloud.google.com/login-objects/home/download.jpeg">
+      </div>
+    
+      <div class="marLeft5 ellipsis userName">mujmuj</div>
+    </div>
+
+
+    <div class="marLeft5">
+      <div #logoutToggle (click)="logoutTigger = !logoutTigger;" class="angleArrowDown icon-angle-down flex j-center a-center br50 pointer"></div>
+      <div #logoutChild *ngIf="logoutTigger" class="logoutTigger ">
+          <div class="flex pointer" (click)="logout()">
+            <div class="icon-logout logicon"> </div>
+            <div> Log out </div>
+          </div>
+      </div>
+    </div>
+    
+    
+  </div>
+  
+
+
+
+</div>

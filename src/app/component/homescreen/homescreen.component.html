@@ -1,0 +1,34 @@
+
+
+
+<div class="homeMain">
+
+
+    <div class="chipDivision flex">
+        <div *ngFor="let data of chips" class="marRight">
+            <app-chip [chipData]="data"></app-chip>
+        </div>
+    </div>
+
+
+    <div class="chipsPartition flex wrap">
+
+
+        <div *ngFor="let data of videos" class="chipMain">
+            <app-listcard [listDetails]="data">
+        
+            </app-listcard>
+        </div>
+        
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+

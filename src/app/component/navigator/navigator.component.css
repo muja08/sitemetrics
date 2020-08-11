@@ -1,0 +1,58 @@
+.navTop {
+    height: 55px;
+    background: #5f96ff;
+    position: relative;
+    padding: 0 10px;
+}
+
+.icon-navicon:before {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+}
+
+
+.pp {
+    height: 25px;
+    width: 25px;
+    
+}
+
+.br50 {
+    border-radius: 50%;
+}
+
+.angleArrowDown {
+    background: white;
+    height: 32px;
+    width: 32px;
+}
+
+.angleArrowDown:before {
+    font-size: 12px;
+}
+
+.marLeft5 {
+    margin-left: 5px;
+}
+
+.profile {
+    background: white;
+    padding: 5px;
+    border-radius: 20px;
+}
+
+.logoutTigger {
+    position: absolute;
+    right: 5px;
+    background: #e8e4e4;
+    margin-top: 5px;
+    padding: 5px;
+    border-radius: 2px;
+}
+
+.userName {
+    max-width: 80px;
+    min-width: 60px;
+}
