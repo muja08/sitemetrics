@@ -4,3 +4,6 @@
   bottom: 2px;
   margin-right: 3px;
 }
+button:focus {
+  outline: none;
+}

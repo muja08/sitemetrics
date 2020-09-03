@@ -84,8 +84,7 @@ export class SiteDetailsComponent implements OnInit {
   getsiteDetails() {
     this.globalservice.getSiteList().subscribe((response) => {
       this.domainsList = [...response];
-      this.sitetableRows = undefined;
-      this.sitetableRows = [...this.setDetails(this.domainsList)];
+      this.filterRecords();
     }, error => {
       console.log('Error on getting db.json file', error);
     });
@@ -337,6 +336,7 @@ export class SiteDetailsComponent implements OnInit {
       usedDomains: 5,
       montlyVisitor: Number(siteDetail.monthlyVisitor)
     };
+
     if (siteDetail.subDomainList && siteDetail.subDomainList.length) {
       const subDomain: any = [];
       siteDetail.subDomainList.forEach((each: any) => {
