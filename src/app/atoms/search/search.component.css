@@ -1,0 +1,25 @@
+.searchInput {
+    border: 0;
+    background: transparent;
+    width: 40px;
+    color: var(--one);
+    width: 150px;
+}
+
+.searchInput:focus {
+    outline: none;
+}
+.searchInput::placeholder {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--sixteen);
+}
+.seachIcon {
+    color: var(--sixteen);
+    font-size: 14px;
+    margin-right: 5px;
+}
+.searchInput:before {
+    position: relative;
+    bottom: 1px;
+}

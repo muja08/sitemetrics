@@ -1,0 +1,9 @@
+<div class="counterMain flex a-center">
+  <div>
+      <input type="number" [(ngModel)]="counterValue" class="counterInput" (keydown.enter)="modifyCounter('enter')">
+  </div>
+  <div class="flex column spinOuter">
+    <i class="fa fa-caret-up spinUp pointer" (click)="modifyCounter('inc')"></i>
+    <i class="fa fa-caret-down spinDown pointer" (click)="modifyCounter('dec')"></i>
+  </div>
+</div>

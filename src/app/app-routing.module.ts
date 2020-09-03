@@ -3,21 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'onboard',
-    loadChildren: './component/onboard/onboard.module#OnboardModule'
-  },
-  {
-    path: 'home',
-    loadChildren: './component/homescreen/homescreen.module#HomeModule'
-  },
-  {
-    path: 'profile',
-    loadChildren: './component/profile/profile.module#ProfileModule'
-  },
-  {
-    path: 'edit-profile',
-    loadChildren: './component/profile/profile.module#ProfileModule'
-  },
+    path: 'sitedetails',
+    loadChildren: './component/site-details/site-details.module#SiteDetailsModule',
+  }
 ];
 
 @NgModule({

@@ -1,44 +1,67 @@
-import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-navigator',
   templateUrl: './navigator.component.html',
-  styleUrls: ['./navigator.component.css']
+  styleUrls: ['./navigator.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
-export class NavigatorComponent implements OnInit {
+export class NavigatorComponent {
+  displayPic = 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAQEBAQEBAVEBAVDRIbDRUVDRsQEA4WIB0iIiAdHx8kKDQsJCYxJx8fJTIlMSsuMDAwIys1QDMuNzQ5MDcBCgoKDg0NFQ8QFTcZFhkrKy0rNzcrKzcrKy03KzcrLS0yODc4NzItNy0rLzEtNSs3LS0tLSstNysrLSsrLSsrK//AABEIAMgAyAMBIgACEQEDEQH/xAAcAAABBQEBAQAAAAAAAAAAAAAAAwQFBgcCAQj/xAA5EAABAwIEBQIDBwMDBQAAAAABAAIDBBEFEiExBiJBUWETcTKBkQcUQlKhscEj0fAVFuEkM2Jy8f/EABkBAAMBAQEAAAAAAAAAAAAAAAABBAMCBf/EACQRAAICAgICAgMBAQAAAAAAAAABAhEDIRIxBEETUSIyYXEU/9oADAMBAAIRAxEAPwBSCKxToEBwXgICRkdzheantFdaZI4y8CH5Kk0mrz7q4Y1ETB8lT6Ac591VMlxdj118wTiSHMFyG3cFMUtDcXWMVdm2fpHmGUYy2I6JVmB5ibNvbU6KfosBkyh3wjS1+qj8d4vhw5xgiAlly2cTuX+Ow3Wqgifh9i8XBrbtMpDWFt3d/A902qqChozuAW5jKXuzewA6Xt76qsY59pDwwMYB95cNSDyQ+fLrKh4hib53hpeREPjcTzP7k+StIxXsJUujQcQ4nc7MYwGtcbsbG3psLuI232Ua/HS8hkwvZwvZ7nOt9epVPGIudYg+nC3SMWuT7JOlqrv5L5r7ud1WmjlyZpMVbANHR53uFzcXyj3Nyu6niCGDIBCHOzat9Xp5WcwVrwSfUNvfQlODUNyW+J51e6+3YfVOov0ccmaTDUwTs9QPETr6te79jb2XL6fo7YjRUfCZX2ZG0tyv1zO11F9PCsuH4u6QAPaAAQMwI06bdVxLHq0NTT0xxLhgGoUfNRgG5UtJV5DZybV8ocwkbrLQMiHyEmwTltKwjm3TagiNySEjidWRoFyMXbCwHdNMXYLXUaZ3WvdI/eXPuCUASWETNJVrpwLDUFUCmbZ26nIppG2IJIQmBbAhMqCqzN13Quxj8gd01qHWIKYQVh6p4XhwBUjVMvg7PcVxV3pWsq/RnW6tVXTNdATbVVemGp91Q7qyaH7MlYDqPdWqjqoYIzPNctaLtaPxu6D6qsUTBcLjjpxbTRkXFpLu9rLPG6ZvkV0K8RfaM9rXZD/UdcOt8IaL6Dtc2WVPxF7pHSucS8km5PVJ1s1zoTZNG9VVFE0pWOBObknUrySboOyQsuSnRyOPvBH0s3wuWTEAgG190iQu2sJ2TFQsKkgD9F0ypIvrqd0iadw1suPdL/AaJqhxFwyC9suylMMxotaAPiJOt/e6qzCnVLTOdrewG+uyfJnLijQmTPkibn1dlGun8JASkGx2UXglWWMILrgbeFxNiWZ3ZYSRzJFrpXDLoojEYruunOD1IIsdlJy0TXapdgVmOmzHKUydROY+3S6s8lLYi26RxGmIAdZFDWyIFCRqdEs2oay1zopmcB0Ga2oCokznPcddinR1Rc4KpmhBQqdDORcXKEDRcYwpOkHKmuHwZgLqXjgAFlPNlkBpUVLvTItooOk+I+6sU9gwjqoCEAOPutU/xM6/NkxRx8zSTYX1PZTOL00U9M9jm3vrcnKb9r/5soaCTYK4YPOywbI1uQi7id7dlxD2aTe0YVxFgL6YgfEHXII6eCoVrFc/tFxz16hzIwGRt2aNrqr4cM0jR0uqYt1snl+1IbimceiVp8MkkdZrST7LZMHwKm9JpLASRrcdVI0GEQxkkNF79As3mNo4L7Zkn+yqnKDl+Sk+H+CpTIPUaQ0brXTkA2H0XImb2ss3lf2arDH6KvLwhE4Wyj6KsYvwEQSWjTwtLNSei7ieHb7JRmvR1KGtowjFMEfBqRcd0yiqbdNVuvEPD8U9PJZvNa4t3WHYhThjnM1FiQLqmN+yLJFJ6JHCibuPQi1vK7qGNJBG902wme9hsc4vra6kvSBdfylIxJLDITlFt1KQ1DmkX2SmDU4LdOyc1VJ4XFUc0eCzyCCnlVSZo7eFFtYYyCpyhqGvATiNEDLFljcwqj1MRY91trrTcXpxlcQs6rzneQNwUztHtDRZ9ShK4fVZDlIshA6L1hwFgncz8ouovD5hYC6e1bSW6KSRZEj6mruDZRkR5lITwZWm6YQDVdp6G4/lZIxO1CnaibLEHHUC3zVda7maPKn62LNT2HZdYvZx5HoybiuEtqprtABdmbbbmGb+VH0MuVwPlWrjmiJihnykWtE8j4SWg/rZU2BpLg0aknRULaMGtmvcH17pIsp7aKwNikGwumPAOAGOO7zblBN9gpTEOK6KElgcDb4j0UrgpWy2M+Ko6gikO4S8dKf/AKo5nGtI74XgnsnVLj0cmxWTjFdnfJvodw0BvqQU9ipWt3IVaxfiB0R5G/8AKoGLcXTyPsZ8gvswXK0x16RxO0tm50cUb7gOB7i6xv7UuC5aWR1VGC6nc7mI3iPn5pLB8ZZE8F0szXkAgnlv5Wr4dUMxKilppHCTNEQ09fBVKyJuiacHVnzrhxHqNv8Am1U+7LbQ6pvgeBE1mSUmNkbnGc5bkZTYgDuTorbiXDgD3uaQWE3YQzIC06jQbaJSe6J5QfHl6O+F5NNVZHxByrOGtyabWU9TVPRNHCYnVYeHA2UTSsdG+x2VmzaJjVUmY3CTj7Q2jysF4yO4WdVVM+ORxDbi60wREixTOTD4zckLo6RQIKUvOYiy9Vsq6NuuUWCEgsZUkrWkWOcluo2DD/Kn6R4LRdVyNgFgDbq6469v87qcw/aywyIqie4k3lNlBiwN1ZJ47tKrNQLOIXETfscwi7mlW+ijvGAVTaQnM0K84cOQLbD2YeT6IXi3hl9VRTCH44/6uW3xgA3/AEKyHh+HNVwN7zNH6r6Aroi+nc0HeVmbXpZyy2fhwUeI05a4OjNXHYdW82y6eRcnAccEvjWVF44gm9KAMzlrS3nA3csxrax5zGGEBoO7m5nO9lvb8FjnYM7QT0uoWu4QB0aLDwFmoOO+zZNSVXRkUWHvELZnStDy42jDea3dX/7PsOMhDpG7bdLqWpuDQDzbdVcMHw5kZAaLANRwcmrQNqCpOyI4o4abPCRGMrrbrIa7guVklnMcDc3LdcwvovotwB23TGsYy13i475Vs8aW0ZKd6aszTDcH9UMEsGYNYGszt0YB2V74dwpsAGRmXvZPYI4ugHhOw8DbREUkE5WqSozPE4YaTGaj1G3ZUMBb2Gb4v1BKlqqkyxxMO4D237gONkz4jgFRjEDSRYUuY33cQ4mwU1jA5mDqI7nwSSf7JcbyWcykvg4/0qlRh9jcJM0zrXCnHBAaF1xIuIwoS62qdtK9cOy8CY+jwpvVbJy5JvbdAyKqtG+SvF1iUZKEhFfje3e5vm2tpb3UtSS2UBGeZStI/ZYSLVolaiazVX54i5xKl6h+limBcAVkbx+jmmHM0FXah+AeypsDLvBVupBZoW+En8klaWxuw/iGnh3T/PKqHF+HObFJMAc0UrJGG1xodWnsVaWd0lxRGZqKfIOb0yZbbmwvf20Ty405KRp43kOMJY37JfCcUa6NjgdHMaR81IuxBouse4Ox8iP0nO1boy/ZWb/Uy7YrOWVwdHUIKSstlXiF9G6+ygsb4xmjcI4KUuAt6hMgjcPkd1F/7tpoHEON3jYb3KpfFnE09XIQwFrAeUDf5ldJSkrsG4xdVZfazi6T0yYy1r8uznWaz3sl+Hcemqmlk1RE7sGCxPixKzino2ugLJJnZjrbLt87qOipnRPBY8Nt+LNlt31Sgle2PJaVqJr8tW6F4bmGuwJTkYsb6nTqsZrMemMt2SOkjGhvrb5q1YxjwZTxPDrl4B90nFqWmc8lKOzqux1oxiGQk5G8r7DWxvp+quUtQZHF5FiTe3bwsWw6tLqpr3audINd9StijGg9lUkQylbOivCvQiyZyJkrxKFq8LUCEiFyUrZcOSGN547heJxZCQGftFnkdvN1JUrhcJLFG5JXNsG3308+VzGdlg16K09JklVyaKOaCdU7cLhNnOsCFibwex7hpBcArhEzlCpWG/GCrtTjkHst8JP5PYtElmsa67Xi7HNIcPB0KRhCWboR1VBMY/xhhH+n1RMMhfGTdh6i4/XfdK4JxASCCOYbD83srt9quEialEwB9QOGQgW5Dvf+FjEU5jeCNCCsZQUkUQm4P+FhkwSeV7pCSHl1wN7KUocIlc4Z3MGmoIPMe908wDEhJr1trdTFRGXNJaNbaKZzldMvhCHY7p6N8TWFvosAaASILyO+d7JcYbTObZ5MrzmuXOva510Giqwpq69s2VvjoFN8O4LPfPI+/uV2p/SHLjXR1WYPTsjJa0DtoFn/ABkWs9OOPQNzE/NaHxRO2CI5j0NvJWQYnVmV1z5XeKLuyPPNcaH/AAywOnhuL/1W7mw3W3PaBtt0WMcJwn1mOGtnjlG5utpnBB5tz1BuD7ft8lQR+hJFkIXZyeLwrpFkhiZXJalbLwhIBItQlMqEgIDiunY0lxbdx2ObQfL6qCj2CtPGdOS246Kp0rwRbqssiplGN3EexyaWSNUCNV3Cxc1r9FOyqB3hMwLgPKvlP8AWbYY+0g91oVDOMguVthMPI9D2IJUNSLJwujUBUWSilXRtqYXRPOmUhmut+gHdYdxzgElJUFpbpYG4ZkabjT/PdbrhjXSyhrPmfyjum/2j4TDJTenlu4MdY69ienVcvWzRbVHzvRYk+Iggq84RxnG1oDhzBZ/UwlriLEdr9EibpSxxkOOWUdGnYhxy38LQTbcJpT8fOGY2tpyhZ45x6r0O0S+GKG88mTuN47JVHmdpfbuoa11zG26nOG8IfPK1tiG3u53QBd6ijPc2XH7LeGBUP9SW7Yxo05vx/h9wtCqIDG4sda7TZRuCObA6jpI931Md9dbA5j+yuPEuCulIlhF3/jF/iHdOO1aHOHHRW9F5p3SNRSSsNnNLT2Isk/TcgzHBc3uj1G91HywP7rqOF3UpWA8MrVw6ZqSNOe65NN5RsBQ1LUJP7qEI2B3ikBkYQR0VGMBY8jytMdEqbj1JleSuci1Zpje6GsQ0TGpTmImyaynVSS7LsZ7RRjOFdaSl5QVTKY2cPdX/AAo3YPZa4TLyV0dR03lKtpk6iiJIAFydlYMPwcNs6TU9BuAqErJBXA6AQx7c7tXfwFUvtAndHURD8MkLsptoHtP9iPor+oLi/B/vdOWDSRpzQn8rh/fb5ruUbjSNMbSkrMJxjh1jgSwWdfRU2vw58R1GndarYkWIIINnA7g9kxrKEPBBFwoI5nF0z0MnjRmrWmZaW33Q2E3V5k4bYb6W7eElTcNkGxPXTytvniSf8s0QGE4W57wLafutIwuFsDAAANOiZYbhbYQTbUpeumLWFYzy8noqxYFBb7J/7Pac1OIunPwQRkN/93aftf6rWlTfs2wz0KJkjhZ8t3uJ3N9v0srZTzZr+CrscagiDLK8jOpoWvGV7Q4eRdV7EuHiLuh1HVpOo9lZkLqjgzyopns0c0t9xZI5VossTXCzmhw7EXUXUcPQu1bdntqEuJzRTsq5IU1WYFMzUDOP/Hf6KJkiINiLe6VC6EUIKEqFZKEKtcRsVnVf4ibolPo7h+xVw0pq9uqkA7okvTzOAAuSdFHIvxDaNmo06rSeFcOfKwG1m9T0SWB8BE5H1Dso0JYBzexPRX+GJrGhrQA0DQDYLfDjfbMs+RS0hvR4eyLYXd3O6eIQqSY8K4edbfRdlcuF0wMy47w70KpsrRZk4ObsHjf6j9iocQ38harjeGR1cLoX6dWnqx3QhZ9iODzUpyyC7D8L2jkd/Y+FB5OF3yR6Hj5k48X2RZhHZeOit0T1rb7Lh8ajoqsZuCc8OYF9+qLO/wCxHrOe/Zvz/a6T9BzyGMBLnOs0Dclahw/hDaSBsQsXbyuAsXu8/sqvGx8nb6J/Iy8I0u2dyCwAaMrQLMAGjQnNHHlGu53SvppSy9I8vs9QhCR0CEIQAJtVUMUnxsBPfYpyhAFarOF7kmN/ycP5CFZUJUKkUSJyisfHKpGOQJGopXTubGwXc4/Tys5dBHsq9HQvlcGMaXOOwAutE4b4SZTESyc8vT8rP+VLYJg8dKzKwXcfjdbVxUmlDEltmrm+kCEIWxmCEIQAIQhACckd9tD0TeUZgWyND2kcwLbp4vCLoApmM8MZby0wJH4mX1Ht/ZV2Yho89dNlqgaoXE+HY5pWyfDc/wBYAaSD+Cp8njp7RTi8hrUiK4KwTL/1Ug1I/oAj4R+b5q4LxrQAANANvC6WsIqCpGE5OcrZ4AvUIXZyCEIQAIQhAAhCEACEIQBmj2u6K4cM0Hpx+o4c7x9G9FE0NPnka227tfbqre1oAsPkuEtgdIQhdgCEIQAIQhAAhCEACEIQAIQhAAhCEACEIQAIQhAAhCEACELwoA9QvEIAiqGlDaiQgaAcvz/wqVCEJR6A9QhCYAhCEACEIQAIQhAAhCEACEIQAIQhAAhCEACEIQAIQhAHiChCBCYfrbwhCF1Rymf/2Q==';
+  userName = 'Muja Tom';
+  email = 'mujatom@gmail.com';
+  sideNavMenus: any = [
+    {
+      label: 'Dashboard',
+      route: '',
+      icon: 'fa fa-pie-chart'
+    },
+    {
+      label: 'Site Details',
+      route: '/sitedetails',
+      icon: 'fa fa-sitemap'
+    },
+    {
+      label: 'Migrations',
+      route: '',
+      icon: 'fa fa-database'
+    },
+    {
+      label: 'Backups',
+      route: '',
+      icon: 'fa fa-file-o'
+    },
+    {
+      label: 'Collaborators',
+      route: '',
+      icon: 'fa fa-users'
+    },
+    {
+      label: 'Support Tickets',
+      route: '',
+      icon: 'fa fa-ticket'
+    },
+    {
+      label: 'Open New Ticket',
+      route: '',
+      icon: 'fa fa-plus-square-o'
+    }
+  ];
+  currentRoute: any;
 
-  logoutTigger: any = false;
-  @ViewChild('logoutToggle') logoutToggle: ElementRef;
-  @ViewChild('logoutChild') logoutChild: ElementRef;
-  userData: any;
-
-
-  constructor(
-    private renderer: Renderer2,
-    private router: Router,
-    public globalservice: GlobalService,) {
-    this.renderer.listen('window', 'click', (e: Event) => {
-      if (!(this.logoutToggle && this.logoutToggle.nativeElement.contains(e.target))
-        && !(this.logoutChild && this.logoutChild.nativeElement.contains(e.target))) {
-        this.logoutTigger = false;
+  constructor (private router: Router) {
+    this.router.events.subscribe((event: any) => {
+      if (event && event.url && event.url.length) {
+        this.currentRoute = event.url;
       }
     });
-
-    this.globalservice.userData.subscribe((data) => {
-      console.log('data', data)
-      this.userData = data;
-    });
-
-  }
-  
-  ngOnInit() {
   }
 
-  logout() {
-    this.logoutTigger = false;
-    this.router.navigateByUrl('onboard');
-    localStorage.clear();
+  navigate(route) {
+    if (route && route.length) {
+      this.currentRoute = route;
+      this.router.navigateByUrl(route);
+    }
   }
 }

@@ -1,0 +1,11 @@
+<div [ngStyle]="headerProperties" class="flex a-center" >
+  <div *ngFor="let eachHeader of headerData" [ngStyle]="eachHeader.style">
+    {{eachHeader.label}}
+  </div>
+</div>
+
+<div *ngFor="let eachRow of tableRows" [ngStyle]="eachRow.style">
+  <app-accordion [accordionData]="eachRow" *ngIf="eachRow.type === 'Accordion'">
+
+  </app-accordion>
+</div>

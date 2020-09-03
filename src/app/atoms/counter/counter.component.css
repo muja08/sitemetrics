@@ -1,0 +1,34 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.counterMain {
+  border: 1px solid var(--menuGrey);
+  height: 43px;
+  border-radius: 5px;
+  padding: 0 8px;
+}
+
+.counterInput {
+  border: 0;
+  background: transparent;
+  width: 40px;
+  color: var(--one);
+}
+.counterInput:focus {
+  outline: none;
+}
+.spinOuter {
+  color: var(--one);
+}
+.spinOuter > i {
+  position: relative;
+}
+.spinUp {
+  top: 2px;
+}
+.spinDown {
+  bottom: 2px;
+}

@@ -1,0 +1,19 @@
+.font8 {
+	font-size: 8px;
+}
+.progressMeter, .progressValue {
+	fill: none;
+}
+.progressMeter {
+	stroke: var(--fifteen);
+}
+.progressValue {
+	stroke-linecap: round;
+}
+.antiClock {
+	transform: rotate(-90deg);
+	transform-origin: top center;
+}
+.label {
+    font-weight: bold;
+}

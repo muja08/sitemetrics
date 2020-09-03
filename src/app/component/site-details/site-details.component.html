@@ -1,0 +1,35 @@
+<div class="mainSiteDetails">
+  <div class="siteContent">
+    <div class="siteDetailsHeader flex s-between">
+      <div class="moduleHeader flex a-center">Site Details</div>
+      <div>
+        <app-button [btnProperties]="addNewSiteBtn" icon="fa fa-plus" height="70px" width="120px"
+          (submit)="addSite($event)"></app-button>
+      </div>
+    </div>
+    <div class="flex recordDetail">
+      <div class="flex a-center counterOuter">
+        Show
+        <div class="counterOuter">
+          <app-counter [counterValue]="counterValue" (emitCounter)="updateCounter($event)"></app-counter>
+        </div>
+        Entries
+      </div>
+      <div class="flex a-center searchOuter">
+        <app-search (emitSearch)="searchRecord($event)"></app-search>
+      </div>
+    </div>
+    <div class="tableOuter" *ngIf="sitetableRows && sitetableRows.length">
+      <app-custom-table [headerData]="sitetableHeaderData" [headerProperties]="sitetableHeaderProperties"
+        [tableRows]="sitetableRows">
+      </app-custom-table>
+    </div>
+
+    <div *ngIf="!(sitetableRows && sitetableRows.length)" class="noRecordMsg flex j-center a-center">
+      No record Found
+    </div>
+  </div>
+</div>
+<app-dialog-modal *ngIf="dialogProperties && dialogProperties.enableDialog" [dialogProperties]="dialogProperties"
+  (close)="closeDialog($event)" (submitDialog)="submitDialog($event)">
+</app-dialog-modal>

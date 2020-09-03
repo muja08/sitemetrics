@@ -1,0 +1,29 @@
+.mainSiteDetails {
+    background: var(--fourteen);
+    min-height: 100%;
+}
+.siteContent {
+    padding: 50px 60px;
+}
+.recordDetail {
+    margin-top: 35px;
+}
+.counterOuter {
+    margin: 0 5px;
+}
+.searchOuter {
+    margin-left: 20px;
+}
+
+.counterOuter {
+    color: var(--eleven);
+    font-size: 14px;
+}
+.tableOuter {
+    margin-top: 60px;
+}
+.noRecordMsg {
+    height: 150px;
+    color: var(--sixteen);
+    font-size: 14px;
+}

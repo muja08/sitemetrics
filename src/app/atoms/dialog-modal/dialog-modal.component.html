@@ -1,0 +1,50 @@
+<div id="popup1" class="overlay">
+	<div class="popup">
+        <div class="flex pop-header s-between">
+            <div class="pop-title"> {{dialogProperties.header}} </div>
+            <div class="fa fa-times pointer" (click)="closeDialog(dialogProperties.id)" *ngIf="dialogProperties.close"> </div>
+        </div>
+        <form class="flex wrap s-between form-padding" [formGroup]="form" *ngIf="dialogProperties.id === 'addDomain'">
+            <div class="flex flb-48 column field">
+                <label class="label-space"> Domain name * </label>
+                <input type="text" class="input" formControlName="domainName">
+            </div>
+            <div class="flex flb-48 column field">
+                <label class="label-space"> Storage * </label>
+                <input type="text" class="input" formControlName="storage">
+            </div>
+            <div class="flex flb-48 column field">
+                <label class="label-space"> Subdomain </label>
+                <input type="text" class="input" [(ngModel)]="subDomainList[0].name" [ngModelOptions]="{standalone: true}">
+                <ng-container>
+                    <div class="field flex marginSubDomain" *ngFor="let suddomain of subDomainList | slice:1; let i = index">
+                        <input type="text" class="input" [(ngModel)]="suddomain.name" [ngModelOptions]="{standalone: true}">
+                        <span class="remove" *ngIf="i === subDomainList.length - 2" (click)="removeSubdomain(i + 1)"> x </span>
+                    </div>
+                </ng-container>
+                <div class="add-more as-end"> 
+                    <app-button [btnProperties]="addMoreBtn" background="var(--white)" fontColor="var(--eleven)" width="110px"
+                        borderRadius="0" height="40px" width="100px" (submit)="addSubdomain($event)">
+                    </app-button>
+
+                </div>
+            </div>
+            <div class="flex flb-48 column field">
+                <label class="label-space"> Monthly Visitor * </label>
+                <input type="text" class="input" formControlName="monthlyVisitor">
+            </div>
+        </form>
+        <div class="flex form-btn ">
+            <div class="marginRight10"> 
+                <app-button [btnProperties]="closeBtn" background="var(--white)" fontColor="var(--eleven)" width="110px"
+                     height="45px" width="100px" fontSize="12px" (submit)="closeDialog(dialogProperties.id)">
+                </app-button>
+            </div>
+            <div [ngClass]="{'c-pointer': form.valid}"> 
+                <app-button [btnProperties]="saveBtn" background="var(--one)" fontColor="var(--white)" width="110px"
+                     height="45px" width="160px" fontSize="12px" (submit)="submit(form.value)">
+                </app-button>
+            </div>
+        </div>
+    </div>
+</div>

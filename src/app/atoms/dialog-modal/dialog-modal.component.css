@@ -1,0 +1,70 @@
+.overlay {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.5);
+    transition: opacity 200ms;
+    position: fixed;
+}
+.popup {
+    margin: 75px auto;
+    background: var(--white);
+    max-width: 800px;
+    border-radius: 15px;
+    position: relative;
+    box-shadow: 0 0 20px;
+}
+.pop-header {
+    border-bottom: 1px solid var(--menuGrey);
+    padding: 25px 25px 25px 50px;
+    font-weight: 900;
+}
+.flb-48 {
+    flex-basis: 48%;
+}
+.form-padding {
+    padding: 15px 50px;
+}
+.field {
+    margin: 15px 0 15px 0;
+    position: relative;
+}
+.input {
+    padding: 0.5em;
+    height: 8px;
+    width: 95%;
+    border: 2px solid var(--thirteen);
+}
+.label-space {
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--eleven);
+}
+.add-more {
+    margin: 25px 0;
+}
+.as-end {
+    align-self: flex-end;
+}
+.remove {
+    font-size: 16px;
+    margin: 0 4px;
+    cursor: pointer;
+    position: absolute;
+    right: -20px;
+    top: 2px;
+}
+.marginSubDomain {
+    margin: 25px 0 0 0;
+}
+.marginRight10 {
+    margin-right: 10px;
+}
+.form-btn {
+    padding: 20px;
+    border-top: 1px solid var(--menuGrey);
+    justify-content: flex-end;
+}

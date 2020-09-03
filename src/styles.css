@@ -1,15 +1,41 @@
-@import url('https://images.examly.io/icons2/examly.css');
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 :root {
-    --main-color: blue
+   /* primary */
+   --one : #5B7CFD;
+   --two : #33CC86;
+   --three : #FF7F57;
+   --four : #FFAE33;
+   --five : #FFCF27;
+   --six : #FBE691;
+   /* light */
+   --seven : #DEE5FF;
+   --eight: #CDF5F4;
+   --nine : #FFE5DD;
+   --ten : #D8E0FE;
+   /* neutral */
+   --eleven: #232D42;
+   --twelve: #8A92A6;
+   --thirteen: #737b8b;
+   --fourteen: #E7EEF7;
+   --fifteen: #E3E5E8;
+   --sixteen: #929292;
+
+   --white: white;
+   --selectedMenu : #576fcf;
+   --menuGrey: #d3d3d3;
+   --tableHeader: #f2f3f3;
+   --red: #ff0707;
+   --redShade: #f5cdcd;
+   --blueShade: #ced3f5;
+   --pink: #df1eeb;
+   --orangeFade: #f3c57fbf;
 }
 
-
-
-
-
-
-
+body {
+    font-family: 'Roboto';
+}
 
 
 .flex {
@@ -42,17 +68,45 @@
 .wrap {
     flex-wrap: wrap;
 }
-.w100 {
-    width: 100%;
-}
-.fb50 {
-    flex-basis: 50%;
-}
 .pointer {
     cursor: pointer;
 }
-.ellipsis {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.w100 {
+    width: 100%;
+}
+.moduleHeader {
+    font-size: 36px;
+    font-weight: bold;
+    color: var(--eleven);
+}
+
+.hexagonShape {
+    margin-top: 0;
+    width: 20px;
+    height: 10px;
+    background-color: var(--one);
+    border-color: var(--one);
+    position: relative;
+    display: inline-block;
+}
+.hexagonShape:before {
+    content: " ";
+    width: 0;
+    height: 0;
+    border-bottom: 10px solid;
+    border-color: inherit;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    position: absolute;
+    top: -10px;
+}
+.hexagonShape:after {
+    content: "";
+    width: 0;
+    position: absolute;
+    bottom: -10px;
+    border-top: 10px solid;
+    border-color: inherit;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
 }

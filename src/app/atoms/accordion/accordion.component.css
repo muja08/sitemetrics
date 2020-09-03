@@ -1,0 +1,25 @@
+.header,.tail {
+  width: 100%;
+}
+
+.removeBottomRadius {
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.secondRowMargin {
+  margin-top: 15px;
+}
+
+.barOuter {
+  width: 80%;
+}
+.hexagonPosition {
+  position: relative;
+  top: 4px;
+  margin-right: 4px;
+}
+.Professional {
+  color: var(--sixteen);
+  font-size: 14px;
+}

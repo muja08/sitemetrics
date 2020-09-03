@@ -1,4 +1,9 @@
-<div>
-    <app-navigator *ngIf="showNav"></app-navigator>
-    <router-outlet></router-outlet>
+<div class="flex">
+    <div class="navBar">
+        <app-navigator></app-navigator>
+    </div>
+    <div class="outlet">
+        <router-outlet></router-outlet>
+    </div>
 </div>
+

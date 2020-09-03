@@ -1,33 +1,26 @@
-<div class="flex navTop a-center j-between">
+<div class="mainNav flex column">
 
-  <div class="flex icon-navicon"></div>
-
-
-  <div class="flex a-center">
-
-    <div class="flex a-center profile pointer">
-      <div class="flex br50">
-        <img class="pp br50" src="https://storage.cloud.google.com/login-objects/home/download.jpeg">
-      </div>
-    
-      <div class="marLeft5 ellipsis userName">mujmuj</div>
+  <!-- profile -->
+  <div class="profile flex column a-center">
+    <div>
+      <img class="displayPic" [src]="displayPic">
     </div>
-
-
-    <div class="marLeft5">
-      <div #logoutToggle (click)="logoutTigger = !logoutTigger;" class="angleArrowDown icon-angle-down flex j-center a-center br50 pointer"></div>
-      <div #logoutChild *ngIf="logoutTigger" class="logoutTigger ">
-          <div class="flex pointer" (click)="logout()">
-            <div class="icon-logout logicon"> </div>
-            <div> Log out </div>
-          </div>
-      </div>
+    <div class="name">
+      {{userName}}
+      <i class="fa fa-caret-down nameAction pointer"></i>
     </div>
-    
-    
+    <div class="email">
+      {{email}}
+    </div>
   </div>
-  
 
-
+  <!-- menus -->
+  <div class="menus">
+    <div *ngFor="let menuItem of sideNavMenus" (click)="navigate(menuItem.route)"
+      class="eachMenu flex a-center pointer {{menuItem.icon}}"
+      [ngClass]="{'selectedMenu': menuItem.route === currentRoute}">
+      {{menuItem.label}}
+    </div>
+  </div>
 
 </div>

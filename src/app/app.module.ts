@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CommonheaderModule } from './component/common-header/common-header.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NavigatorModule } from './component/navigator/navigator.module';
 
@@ -14,7 +13,6 @@ import { NavigatorModule } from './component/navigator/navigator.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CommonheaderModule,
     HttpClientModule,
     NavigatorModule
   ],

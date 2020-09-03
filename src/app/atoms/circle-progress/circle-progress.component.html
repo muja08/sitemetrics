@@ -1,0 +1,14 @@
+<svg class="progress" [ngStyle]="{ 'width': circleProperties.width, 'height':circleProperties.width }"
+  viewBox="0 0 120 120">
+  <circle class="progressMeter" cx="60" cy="60" r="54" [attr.stroke-width]="strokeWidth" />
+  <text class="label" x="50%" [attr.y]="circleProperties.mainY ? circleProperties.mainY : '.1em'" dominant-baseline="middle"
+    [attr.dy]="circleProperties.mainDy ? circleProperties.mainDy : '.1em'" text-anchor="middle" [ngClass]="circleProperties.mainClass ? circleProperties.mainClass : ''"
+    [attr.fill]="circleProperties.mainFont && circleProperties.mainFont.color ? circleProperties.mainFont.color : ''"
+    [attr.font-weight]="circleProperties.mainFont && circleProperties.mainFont.weight ? circleProperties.mainFont.weight : ''"
+    [ngStyle]="{'font-size': circleProperties.mainFont && circleProperties.mainFont.size ? circleProperties.mainFont.size : '',
+    'color': circleProperties.mainFont && circleProperties.mainFont.color ? circleProperties.mainFont.color : ''}">
+    {{circleProperties.label}} </text>
+  <circle class="progressValue" [ngClass]="circleProperties.circleClass ? circleProperties.circleClass : ''"
+    [ngStyle]="{'stroke': circleProperties.circleColor}" cx="60" cy="60" r="54" [attr.stroke-dashoffset]="dashoffset"
+    [attr.stroke-dasharray]="strokeDasharray" [attr.stroke-width]="strokeWidth" />
+</svg>

@@ -1,0 +1,10 @@
+<button #button
+  class="flex j-center"
+  [ngStyle]="buttonStyle"
+  (click)="emitCall(btnProperties.name)">
+  <div class="flex j-center">
+    <div class="{{icon}} icon" *ngIf="icon && icon.length">
+    </div>
+    <div *ngIf="btnProperties && btnProperties.name"> {{btnProperties.name}} </div>
+  </div>
+</button>
