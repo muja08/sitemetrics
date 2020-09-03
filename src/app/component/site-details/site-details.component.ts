@@ -335,7 +335,7 @@ export class SiteDetailsComponent implements OnInit {
       domainTag: 'Primary',
       availableDomains: 10,
       usedDomains: 5,
-      montlyVisitor: siteDetail.monthlyVisitor
+      montlyVisitor: Number(siteDetail.monthlyVisitor)
     };
     if (siteDetail.subDomainList && siteDetail.subDomainList.length) {
       const subDomain: any = [];
