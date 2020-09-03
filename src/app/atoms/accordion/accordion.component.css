@@ -1,16 +1,13 @@
 .header,.tail {
   width: 100%;
 }
-
 .removeBottomRadius {
   border-bottom-left-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
 }
-
 .secondRowMargin {
   margin-top: 15px;
 }
-
 .barOuter {
   width: 80%;
 }
@@ -22,4 +19,11 @@
 .Professional {
   color: var(--sixteen);
   font-size: 14px;
+}
+.circle:before {
+  font-size: 6px;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  color: var(--one);
 }

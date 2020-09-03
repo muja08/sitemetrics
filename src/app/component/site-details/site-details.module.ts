@@ -19,7 +19,7 @@ import { CustomTableModule } from 'src/app/atoms/custom-table/custom-table.modul
     CustomTableModule
   ],
   declarations: [SiteDetailsComponent],
-  exports: [SiteDetailsComponent]
-
+  exports: [SiteDetailsComponent],
+  providers: [],
 })
 export class SiteDetailsModule { }

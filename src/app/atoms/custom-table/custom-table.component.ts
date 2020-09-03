@@ -1,4 +1,4 @@
-import { Component, Input, ViewEncapsulation, OnChanges } from '@angular/core';
+import { Component, Input, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-custom-table',
@@ -6,15 +6,12 @@ import { Component, Input, ViewEncapsulation, OnChanges } from '@angular/core';
   styleUrls: ['./custom-table.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class CustomTableComponent implements OnChanges {
+export class CustomTableComponent {
 
   @Input() headerData: any;
   @Input() headerProperties: any;
   @Input() tableRows: any;
 
   constructor() {
-  }
-
-  ngOnChanges() {
   }
 }

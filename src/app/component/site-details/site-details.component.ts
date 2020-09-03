@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-site-details',
@@ -60,6 +61,7 @@ export class SiteDetailsComponent implements OnInit {
       }
     },
   ];
+
   sitetableHeaderProperties = {
     'background': 'var(--tableHeader)',
     'color': 'var(--sixteen)',
@@ -70,78 +72,9 @@ export class SiteDetailsComponent implements OnInit {
   };
 
   sitetableRows: any = [];
+  domainsList: any = [];
 
-  checkDomainList = [
-    {
-      id: 1,
-      domain: 'abcxyz.com',
-      storage: '100gb',
-      usedStorage: '50gb',
-      domainTag: 'Primary',
-      availableDomains: 10,
-      usedDomains: 4,
-      monthlyVisitorCapacity: 10000,
-      montlyVisitor: 100,
-      subdomain: [
-        {
-          id: 11,
-          name: 'abc.xyz.com',
-          usedStorage: '10gb',
-          domainTag: 'Staging',
-          montlyVisitor: 700,
-        },
-        {
-          id: 12,
-          name: 'adef.xyz.com',
-          usedStorage: '40gb',
-          domainTag: 'Add On',
-          montlyVisitor: 1100,
-        },
-      ],
-    },
-    {
-      id: 2,
-      domain: 'xyz.com',
-      storage: '100gb',
-      usedStorage: '50gb',
-      domainTag: 'Primary',
-      subdomain: [],
-      status: 'Inactive',
-      availableDomains: 10,
-      usedDomains: 1,
-      monthlyVisitorCapacity: 10000,
-      montlyVisitor: 2000,
-    },
-    {
-      id: 3,
-      domain: 'xyz.com',
-      storage: '100gb',
-      usedStorage: '50gb',
-      domainTag: 'Primary',
-      subdomain: [],
-      status: 'Inactive',
-      availableDomains: 10,
-      usedDomains: 1,
-      monthlyVisitorCapacity: 10000,
-      montlyVisitor: 2000,
-    },
-    {
-      id: 4,
-      domain: 'xyz.com',
-      storage: '100gb',
-      usedStorage: '50gb',
-      domainTag: 'Primary',
-      subdomain: [],
-      status: 'Inactive',
-      availableDomains: 10,
-      usedDomains: 1,
-      monthlyVisitorCapacity: 10000,
-      montlyVisitor: 2000,
-    },
-  ];
-
-
-  constructor () {
+  constructor (public globalservice: GlobalService) {
   }
 
   ngOnInit() {
@@ -149,12 +82,14 @@ export class SiteDetailsComponent implements OnInit {
   }
 
   getsiteDetails() {
-
-    this.sitetableRows = undefined;
-    this.sitetableRows = [...this.setDetails(this.checkDomainList)];
-
+    this.globalservice.getSiteList().subscribe((response) => {
+      this.domainsList = [...response];
+      this.sitetableRows = undefined;
+      this.sitetableRows = [...this.setDetails(this.domainsList)];
+    }, error => {
+      console.log('Error on getting db.json file', error);
+    });
   }
-
 
   setDetails(domainList) {
     const appliedDetails: any = [];
@@ -386,23 +321,53 @@ export class SiteDetailsComponent implements OnInit {
     return statusValue;
   }
 
-
   closeDialog(id) {
-    console.log(id)
     this.dialogProperties.header = '';
     this.dialogProperties.enableDialog = false;
   }
-  submitDialog(value) {
-    console.log("value", value)
+
+  submitDialog(siteDetail) {
+    const domain: any = {
+      id: Math.floor(Math.random() * 1000) + 1,
+      domain: siteDetail.domainName,
+      storage: `${siteDetail.storage}gb`,
+      usedStorage: '0gb',
+      domainTag: 'Primary',
+      availableDomains: 10,
+      usedDomains: 5,
+      montlyVisitor: siteDetail.monthlyVisitor
+    };
+    if (siteDetail.subDomainList && siteDetail.subDomainList.length) {
+      const subDomain: any = [];
+      siteDetail.subDomainList.forEach((each: any) => {
+        subDomain.push({
+          id: Math.floor(Math.random() * 1000) + 1,
+          name: each.name,
+          usedStorage: '0gb',
+          domainTag: 'Staging',
+          montlyVisitor: 0
+        });
+      });
+      domain['subdomain'] = [...subDomain];
+    }
+    this.globalservice.createSite(domain).subscribe((response) => {
+      this.domainsList.push(response);
+      this.filterRecords();
+    }, error => {
+      console.log('Error on creating a object in db.json file', error);
+    });
   }
-  addSite(event) {
+
+  addSiteDialogTrigger(event) {
     this.dialogProperties.header = 'Add Domain Details';
     this.dialogProperties.enableDialog = true;
   }
+
   updateCounter(counter) {
     this.counterValue = counter;
     this.filterRecords();
   }
+
   searchRecord(searchValue) {
     this.search = searchValue;
     this.filterRecords();
@@ -411,14 +376,13 @@ export class SiteDetailsComponent implements OnInit {
   filterRecords() {
     let filteredValues: any = [];
     if (this.search && this.search.length) {
-      filteredValues = this.checkDomainList.filter((eachDomain: any) => {
+      filteredValues = this.domainsList.filter((eachDomain: any) => {
         const lowerCaseDomain: any = eachDomain.domain.toLowerCase();
         return lowerCaseDomain.includes(this.search.toLowerCase());
       });
     } else {
-      filteredValues = this.checkDomainList;
+      filteredValues = this.domainsList;
     }
-    console.log("filteredValues", filteredValues)
     filteredValues = filteredValues.slice(0, this.counterValue);
     this.sitetableRows = undefined;
     this.sitetableRows = [...this.setDetails(filteredValues)];

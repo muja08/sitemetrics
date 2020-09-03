@@ -4,7 +4,7 @@
             <div class="pop-title"> {{dialogProperties.header}} </div>
             <div class="fa fa-times pointer" (click)="closeDialog(dialogProperties.id)" *ngIf="dialogProperties.close"> </div>
         </div>
-        <form class="flex wrap s-between form-padding" [formGroup]="form" *ngIf="dialogProperties.id === 'addDomain'">
+        <form class="flex wrap s-between formProperty" [formGroup]="form" *ngIf="dialogProperties.id === 'addDomain'">
             <div class="flex flb-48 column field">
                 <label class="label-space"> Domain name * </label>
                 <input type="text" class="input" formControlName="domainName">
@@ -32,6 +32,10 @@
             <div class="flex flb-48 column field">
                 <label class="label-space"> Monthly Visitor * </label>
                 <input type="text" class="input" formControlName="monthlyVisitor">
+
+                <div *ngIf="error && error.length" class="error flex a-center j-center">
+                    {{error}}
+                </div>
             </div>
         </form>
         <div class="flex form-btn ">

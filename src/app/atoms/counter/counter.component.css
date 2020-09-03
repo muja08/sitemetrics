@@ -3,14 +3,12 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
 .counterMain {
   border: 1px solid var(--menuGrey);
   height: 43px;
   border-radius: 5px;
   padding: 0 8px;
 }
-
 .counterInput {
   border: 0;
   background: transparent;

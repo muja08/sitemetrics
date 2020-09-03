@@ -6,7 +6,7 @@ import { Component, Output, EventEmitter, Input, ViewEncapsulation, OnChanges } 
   styleUrls: ['./search.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class SearchComponent implements OnChanges {
+export class SearchComponent {
 
 
   @Input() searchValue: any;
@@ -15,12 +15,7 @@ export class SearchComponent implements OnChanges {
   constructor() {
   }
 
-  ngOnChanges() {
-
-  }
- 
   emitSearchValue() {
     this.emitSearch.emit(this.searchValue);
   }
-  
 }

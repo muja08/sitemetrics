@@ -24,8 +24,11 @@
 .flb-48 {
     flex-basis: 48%;
 }
-.form-padding {
+.formProperty {
     padding: 15px 50px;
+    height: 330px;
+    overflow-y: auto;
+
 }
 .field {
     margin: 15px 0 15px 0;
@@ -67,4 +70,9 @@
     padding: 20px;
     border-top: 1px solid var(--menuGrey);
     justify-content: flex-end;
+}
+.error {
+    height: 80px;
+    font-size: 14px;
+    color: var(--red);
 }

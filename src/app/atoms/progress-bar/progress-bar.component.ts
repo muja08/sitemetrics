@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Input, ViewEncapsulation, OnChanges } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-progress-bar',
@@ -6,18 +6,13 @@ import { Component, Output, EventEmitter, Input, ViewEncapsulation, OnChanges } 
   styleUrls: ['./progress-bar.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class ProgressBarComponent implements OnChanges {
+export class ProgressBarComponent {
 
-  
   @Input() background: any;
   @Input() height: any;
   @Input() fill: any;
   @Input() fillPercentage: any;
 
   constructor() {
-  }
-
-  ngOnChanges() {
-
   }
 }

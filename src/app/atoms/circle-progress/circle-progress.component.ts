@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Input, ViewEncapsulation, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, ViewEncapsulation, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-circle-progress',
@@ -24,19 +24,15 @@ export class CircleProgressComponent implements OnChanges {
     }
   }
 
-  private setProgress() {
-    console.log("one")
+  setProgress() {
     const RADIUS = 54;
     const circumference = 2 * Math.PI * RADIUS;
     const progress = this.circleProperties.value / this.max_limit;
-    
     this.dashoffset = circumference * (1 - progress);
-    console.log("this.dashoffset", this.dashoffset)
     this.strokeDasharray = circumference;
     if (!Number.isInteger(this.circleProperties.value)) {
       this.circleProperties.mainClass = 'font26';
     }
   }
-
 
 }

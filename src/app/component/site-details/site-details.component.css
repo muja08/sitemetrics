@@ -14,16 +14,10 @@
 .searchOuter {
     margin-left: 20px;
 }
-
 .counterOuter {
     color: var(--eleven);
     font-size: 14px;
 }
 .tableOuter {
     margin-top: 60px;
-}
-.noRecordMsg {
-    height: 150px;
-    color: var(--sixteen);
-    font-size: 14px;
 }

@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Input, ViewEncapsulation, OnChanges } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-accordion',
@@ -6,15 +6,11 @@ import { Component, Output, EventEmitter, Input, ViewEncapsulation, OnChanges } 
   styleUrls: ['./accordion.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class AccordionComponent implements OnChanges {
+export class AccordionComponent {
 
   @Input() accordionData: any;
   constructor() {
   }
-
-  ngOnChanges() {
-  }
-
   openCloseAccordion() {
     if (this.accordionData.tail && this.accordionData.tail.data && this.accordionData.tail.data.length) {
       this.accordionData.open = !this.accordionData.open;

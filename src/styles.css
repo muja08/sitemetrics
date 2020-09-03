@@ -1,4 +1,4 @@
-
+/* roboto google font */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 :root {
@@ -21,7 +21,7 @@
    --fourteen: #E7EEF7;
    --fifteen: #E3E5E8;
    --sixteen: #929292;
-
+   /* custom colors */
    --white: white;
    --selectedMenu : #576fcf;
    --menuGrey: #d3d3d3;
@@ -109,4 +109,28 @@ body {
     border-color: inherit;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
+}
+.circle {
+    position: absolute;
+    left: 5px;
+    height: 10px;
+    width: 10px;
+    background-color: var(--white);
+    border-radius: 50%;
+    display: inline-block;
+}
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-track {
+    background: var(--tableHeader); 
+}
+::-webkit-scrollbar-thumb {
+    background: var(--sixteen); 
+    border-radius:5px;
+    min-height: 25px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--eleven);
+    cursor: pointer;
 }

@@ -1,99 +1,72 @@
-<div class="flex a-center column"> 
-
-  <div 
-  class="flex header pointer" 
-  [ngStyle]="accordionData.header.style"
-  (click)="openCloseAccordion()"
-  [ngClass]="{'removeBottomRadius': accordionData.open}"
-  >
-
+<div class="flex a-center column">
+  <!-- accordionhead -->
+  <div class="flex header pointer" [ngStyle]="accordionData.header.style" (click)="openCloseAccordion()"
+    [ngClass]="{'removeBottomRadius': accordionData.open}">
     <div *ngFor="let eachHead of accordionData.header.data" [ngStyle]="eachHead.style" class="eachHead flex a-center">
-
       <div *ngIf="eachHead.type === 'label'" class="flex column w100">
         <div [ngStyle]="eachHead.labelStyle">{{eachHead.label}}</div>
         <div class="secondRowMargin flex">
-          <div class="hexagonShape hexagonPosition"></div>
+          <div class="hexagonShape hexagonPosition">
+            <div class="circle fa fa-check"></div>
+          </div>
           <div class="Professional">Professional Plan</div>
         </div>
       </div>
-
       <div *ngIf="eachHead.type === 'pBar'" class="flex column w100">
-
         <div class="barOuter">
-            <app-progress-bar background="var(--fifteen)" fill="var(--two)" fillPercentage="{{eachHead.value + '%'}}" height="20px"></app-progress-bar>
+          <app-progress-bar background="var(--fifteen)" fill="var(--two)" fillPercentage="{{eachHead.value + '%'}}"
+            height="20px"></app-progress-bar>
         </div>
-
         <div class="secondRowMargin" [ngStyle]="eachHead.labelStyle">{{eachHead.label}}</div>
       </div>
-
       <div *ngIf="eachHead.type === 'view'" class="flex w100">
         <div [ngStyle]="eachHead.labelStyle">{{eachHead.label}}</div>
         <div [ngStyle]="eachHead.dot"></div>
       </div>
-
       <div *ngIf="eachHead.type === 'pCircle'" class="flex w100">
-          <app-circle-progress [circleProperties]="eachHead.circleProperty" [strokeWidth]="eachHead.checkStrokeWidth"></app-circle-progress>
+        <app-circle-progress [circleProperties]="eachHead.circleProperty" [strokeWidth]="eachHead.checkStrokeWidth">
+        </app-circle-progress>
       </div>
-
       <div *ngIf="eachHead.type === 'button'">
-        <app-button [btnProperties]="eachHead.btnProperty" [background]="eachHead.background" [fontColor]="eachHead.fontColor" [height]="eachHead.height" [width]="eachHead.width">
+        <app-button [btnProperties]="eachHead.btnProperty" [background]="eachHead.background"
+          [fontColor]="eachHead.fontColor" [height]="eachHead.height" [width]="eachHead.width">
         </app-button>
       </div>
-
     </div>
-
   </div>
-
-
-  <div 
-  *ngIf="accordionData.open && accordionData.tail.data && accordionData.tail.data.length" 
-  [ngStyle]="accordionData.tail.style" 
-  class="flex tail column">
-
-      <div *ngFor="let eachTailRow of accordionData.tail.data" class="flex" [ngStyle]="accordionData.tail.eachTailStyle">
-      
-        <div *ngFor="let eachTail of eachTailRow" class="eachTail a-center" 
-        [ngClass]="{'flex': eachTail.type !== 'label'}"
-        [ngStyle]="eachTail.style">
-    
-          <div *ngIf="eachTail.type === 'label'" class="flex column w100">
-            <div [ngStyle]="eachTail.labelStyle">{{eachTail.label}}</div>
-          </div>
-      
-          <div *ngIf="eachTail.type === 'pBar'" class="flex column w100">
-      
-            <div class="barOuter">
-              <app-progress-bar background="var(--fifteen)" fill="var(--two)" fillPercentage="{{eachTail.value + '%'}}"
-                height="20px"></app-progress-bar>
-            </div>
-      
-            <div class="secondRowMargin" [ngStyle]="eachTail.labelStyle">{{eachTail.label}}</div>
-          </div>
-      
-          <div *ngIf="eachTail.type === 'view'" class="flex w100">
-            <div [ngStyle]="eachTail.labelStyle">{{eachTail.label}}</div>
-            <div [ngStyle]="eachTail.dot"></div>
-          </div>
-      
-          <div *ngIf="eachTail.type === 'pCircle'" class="flex w100">
-            <app-circle-progress [circleProperties]="eachTail.circleProperty" [strokeWidth]="eachTail.checkStrokeWidth">
-            </app-circle-progress>
-          </div>
-      
-          <div *ngIf="eachTail.type === 'button'">
-            <app-button [btnProperties]="eachTail.btnProperty" [background]="eachTail.background"
-              [fontColor]="eachTail.fontColor" [height]="eachTail.height" [width]="eachTail.width">
-            </app-button>
-          </div>
-      
-
-
-
-      
+  <!-- accordiotail -->
+  <div *ngIf="accordionData.open && accordionData.tail.data && accordionData.tail.data.length"
+    [ngStyle]="accordionData.tail.style" class="flex tail column">
+    <div *ngFor="let eachTailRow of accordionData.tail.data" class="flex" [ngStyle]="accordionData.tail.eachTailStyle">
+      <div *ngFor="let eachTail of eachTailRow" class="eachTail a-center"
+        [ngClass]="{'flex': eachTail.type !== 'label'}" [ngStyle]="eachTail.style">
+        <div *ngIf="eachTail.type === 'label'" class="flex column w100">
+          <div [ngStyle]="eachTail.labelStyle">{{eachTail.label}}</div>
         </div>
-      
+        <div *ngIf="eachTail.type === 'pBar'" class="flex column w100">
+
+          <div class="barOuter">
+            <app-progress-bar background="var(--fifteen)" fill="var(--two)" fillPercentage="{{eachTail.value + '%'}}"
+              height="20px"></app-progress-bar>
+          </div>
+
+          <div class="secondRowMargin" [ngStyle]="eachTail.labelStyle">{{eachTail.label}}</div>
+        </div>
+        <div *ngIf="eachTail.type === 'view'" class="flex w100">
+          <div [ngStyle]="eachTail.labelStyle">{{eachTail.label}}</div>
+          <div [ngStyle]="eachTail.dot"></div>
+        </div>
+        <div *ngIf="eachTail.type === 'pCircle'" class="flex w100">
+          <app-circle-progress [circleProperties]="eachTail.circleProperty" [strokeWidth]="eachTail.checkStrokeWidth">
+          </app-circle-progress>
+        </div>
+        <div *ngIf="eachTail.type === 'button'">
+          <app-button [btnProperties]="eachTail.btnProperty" [background]="eachTail.background"
+            [fontColor]="eachTail.fontColor" [height]="eachTail.height" [width]="eachTail.width">
+          </app-button>
+        </div>
       </div>
-
-
+    </div>
   </div>
+
 </div>

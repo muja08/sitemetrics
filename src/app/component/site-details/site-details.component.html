@@ -4,7 +4,7 @@
       <div class="moduleHeader flex a-center">Site Details</div>
       <div>
         <app-button [btnProperties]="addNewSiteBtn" icon="fa fa-plus" height="70px" width="120px"
-          (submit)="addSite($event)"></app-button>
+          (submit)="addSiteDialogTrigger($event)"></app-button>
       </div>
     </div>
     <div class="flex recordDetail">
@@ -19,17 +19,14 @@
         <app-search (emitSearch)="searchRecord($event)"></app-search>
       </div>
     </div>
-    <div class="tableOuter" *ngIf="sitetableRows && sitetableRows.length">
+    <div class="tableOuter">
       <app-custom-table [headerData]="sitetableHeaderData" [headerProperties]="sitetableHeaderProperties"
         [tableRows]="sitetableRows">
       </app-custom-table>
     </div>
-
-    <div *ngIf="!(sitetableRows && sitetableRows.length)" class="noRecordMsg flex j-center a-center">
-      No record Found
-    </div>
   </div>
 </div>
+
 <app-dialog-modal *ngIf="dialogProperties && dialogProperties.enableDialog" [dialogProperties]="dialogProperties"
   (close)="closeDialog($event)" (submitDialog)="submitDialog($event)">
 </app-dialog-modal>

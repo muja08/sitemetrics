@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Input, ViewEncapsulation, OnChanges } from '@angular/core';
+import { Component, Output, EventEmitter, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-counter',
@@ -6,17 +6,12 @@ import { Component, Output, EventEmitter, Input, ViewEncapsulation, OnChanges } 
   styleUrls: ['./counter.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class CounterComponent implements OnChanges {
+export class CounterComponent {
 
   @Input() counterValue: any = 10;
   @Output() emitCounter = new EventEmitter();
   constructor() {
   }
-
-  ngOnChanges() {
-
-  }
- 
   modifyCounter(addValue) {
     if (this.counterValue) {
       if (addValue === 'inc') {
@@ -33,5 +28,4 @@ export class CounterComponent implements OnChanges {
     }
   }
 
-  
 }

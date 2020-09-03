@@ -6,6 +6,5 @@
 
 <div *ngFor="let eachRow of tableRows" [ngStyle]="eachRow.style">
   <app-accordion [accordionData]="eachRow" *ngIf="eachRow.type === 'Accordion'">
-
   </app-accordion>
 </div>

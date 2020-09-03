@@ -13,13 +13,14 @@ export class DialogModalComponent implements OnInit {
   @Output() close = new EventEmitter();
   @Output() submitDialog = new EventEmitter();
 
-  form : FormGroup;
+  form: FormGroup;
   subDomainList: any = [{
     name: ''
   }, {
     name: ''
   }];
 
+  error = '';
   addMoreBtn: any = {
     name: 'Add More',
     style: {
@@ -49,14 +50,13 @@ export class DialogModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      domainName: ['', [Validators.required]],
-      storage: ['', [Validators.required]],
-      monthlyVisitor: ['', [Validators.required]]
+      domainName: [null, [Validators.required]],
+      storage: [null, [Validators.required, Validators.pattern('^[0-9]*$')]],
+      monthlyVisitor: [null, [Validators.required, Validators.pattern('^[0-9]*$')]]
     });
   }
 
   addSubdomain(event) {
-    console.log(this.subDomainList)
     if (this.subDomainList[this.subDomainList.length - 1].name.length) {
       this.subDomainList.push({
         name: ''
@@ -69,11 +69,21 @@ export class DialogModalComponent implements OnInit {
   }
 
   submit(value) {
-    this.submitDialog.emit(value);
+    if (this.form.valid) {
+      const siteDetail: any = { ...value };
+      siteDetail.subDomainList = this.subDomainList.filter((f) => f.name && f.name.length);
+      this.submitDialog.emit(siteDetail);
+      this.closeDialog(this.dialogProperties.id);
+    } else {
+      this.error = 'Please Enter Valid Details!!!';
+      setTimeout(() => {
+        this.error = '';
+      }, 2000);
+    }
   }
 
   closeDialog(id) {
-    this.close.emit(id)
+    this.close.emit(id);
   }
 
 }

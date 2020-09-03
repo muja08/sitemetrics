@@ -5,7 +5,6 @@
     color: var(--one);
     width: 150px;
 }
-
 .searchInput:focus {
     outline: none;
 }
